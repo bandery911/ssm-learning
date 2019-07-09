@@ -6,11 +6,23 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>ssm3</title>
+    <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function(){
+            $("button").click(function(){
+                var useridHTML = $(this).parents("tr").children("td:first").html();
+                var userid = $(useridHTML).attr("value");
+                alert(userid);
+            });
+        });
+
+    </script>
 </head>
 
 <body>
 
-<table border="1">
+<table id="userinfoTable" border="1">
     <tr>
         <th>Id</th>
         <th>Name</th>
@@ -19,11 +31,11 @@
     </tr>
     <c:forEach var="user" items="${users}">
         <tr>
-            <td>${user.userid}</td>
-            <td>${user.username}</td>
-            <td>${user.address}</td>
+            <td><input type="text" value="${user.userid}" readonly="readonly" class="userinfo"/></td>
+            <td><input type="text" value="${user.username}" readonly="readonly"/></td>
+            <td><input type="text" value="${user.address}" readonly="readonly"/></td>
             <td><a href="./delUser?userid=${user.userid}">删除</a></td>
-            <td><a href="">修改地址</a></td>
+            <td><button>修改地址</button></td>
         </tr>
     </c:forEach>
 </table>
