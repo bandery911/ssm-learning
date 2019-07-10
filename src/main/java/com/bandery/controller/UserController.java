@@ -26,15 +26,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser")
-    public ModelAndView updateUser(String userid, String address) throws Exception{
+    public String updateUser(String userid, String address) throws Exception{
         User user = new User();
         user.setUserid(Integer.valueOf(userid).intValue());
         user.setAddress(address);
         userService.updateUser(user);
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("allusers");
-        mv.addObject("users", userService.findAll());
-        return mv;
+        return "redirect:list";
     }
 
     @RequestMapping(value = "/findUser")
@@ -47,14 +44,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/delUser")
-    public ModelAndView delUser(String userid) throws Exception{
+    public String delUser(String userid) throws Exception{
         User delUser = new User();
         delUser.setUserid(Integer.valueOf(userid).intValue());
         userService.delUser(delUser);
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("allusers");
-        mv.addObject("users", userService.findAll());
-        return mv;
+        return "redirect:list";
     }
 
 }

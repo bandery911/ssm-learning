@@ -1,17 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ page import="com.bandery.model.User" %>
 
 <html>
-
-<%
-    String path = request.getContextPath();
-    String basePath = request.getScheme() + "://"
-            + request.getServerName() + ":" + request.getServerPort()
-            + path + "/";
-%>
-
+<%@ include file="rootPath.jsp"%>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>ssm4</title>
@@ -58,9 +50,9 @@
 <div style="text-align: center">
 <table id="userinfoTable" border="1" style="margin: auto">
     <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Address</th>
+        <th>编号</th>
+        <th>姓名</th>
+        <th>住址</th>
         <th colspan="2">操作</th>
     </tr>
     <c:forEach var="user" items="${users}">
