@@ -12,8 +12,6 @@
 
         $(document).ready(function(){
 
-            //点击所有readonly为false的text时，清空里面的内容
-
             //点击修改地址按钮，修改对应行用户的地址信息
             $(".changeAddressBt").click(function(){
                 var userinfoHTML = $(this).parents("tr");
@@ -68,7 +66,7 @@
         <tr>
             <td><input type="text" value="${user.userid}" readonly="readonly"/></td>
             <td><input type="text" value="${user.username}" readonly="readonly"/></td>
-            <td><input type="text" value="${user.address}" readonly="readonly"/></td>
+            <td><input type="text" placeholder="${user.address}" readonly="readonly"/></td>
             <td><a href="./delUser?userid=${user.userid}">删除</a></td>
             <td><button class="changeAddressBt" value="修改地址">修改地址</button></td>
         </tr>
@@ -77,8 +75,8 @@
 </div>
 <br><br>
 <div>
-    <input type="text" value="输入姓名">&nbsp;
-    <input type="text" value="输入地址">
+    <input type="text" placeholder="输入姓名">&nbsp;
+    <input type="text" placeholder="输入地址">
     <button value="增加" id="addUserBt">增加</button>
 </div>
 
