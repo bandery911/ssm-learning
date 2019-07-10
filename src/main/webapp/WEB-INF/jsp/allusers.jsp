@@ -42,6 +42,15 @@
                 var address = $(this).parents("div").find("input").eq(1).val();
                 window.location.href = "<%=basePath%>" + "users/addUser?username=" + username + "&address=" + address;
             });
+
+            //删除用户
+            $(".delUserBt").click(function () {
+                if(confirm("确认删除")){
+                    var userid = $(this).parents("tr").children("td").eq(0).find("input").val();
+                    window.location.href = "<%=basePath%>" + "users/delUser?userid=" + userid;
+                }
+            });
+
         });
 
     </script>
@@ -50,7 +59,7 @@
 <body style="text-align: center">
 
 <div>
-    <input id="findUserText" type="text" value="请输入用户名">
+    <input id="findUserText" type="text" placeholder="请输入用户名">
     <button value="查询" id="findUserBt">查询</button>
 </div>
 <br><br>
@@ -66,8 +75,8 @@
         <tr>
             <td><input type="text" value="${user.userid}" readonly="readonly"/></td>
             <td><input type="text" value="${user.username}" readonly="readonly"/></td>
-            <td><input type="text" placeholder="${user.address}" readonly="readonly"/></td>
-            <td><a href="./delUser?userid=${user.userid}">删除</a></td>
+            <td><input type="text" value="${user.address}" readonly="readonly" autocomplete="off"/></td>
+            <td><button class="delUserBt" value="删除用户">删除用户</button></td>
             <td><button class="changeAddressBt" value="修改地址">修改地址</button></td>
         </tr>
     </c:forEach>
@@ -75,8 +84,8 @@
 </div>
 <br><br>
 <div>
-    <input type="text" placeholder="输入姓名">&nbsp;
-    <input type="text" placeholder="输入地址">
+    <input type="text" placeholder="输入姓名" autocomplete="off">&nbsp;
+    <input type="text" placeholder="输入地址" autocomplete="off">
     <button value="增加" id="addUserBt">增加</button>
 </div>
 
