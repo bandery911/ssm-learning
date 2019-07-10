@@ -39,8 +39,8 @@ public class UserDaoTest extends BaseTest {
     @Test
     public void testAddUser() throws Exception {
         User user = new User();
-        user.setUsername("fank");
-        user.setAddress("浙江");
+        user.setUsername("f567");
+        user.setAddress("新西兰");
         userDao.addUser(user);
     }
 
@@ -54,9 +54,9 @@ public class UserDaoTest extends BaseTest {
     @Test
     public void updateUser() throws Exception {
         User user = new User();
-        user.setUserid(5);
+        user.setUserid(13);
         user.setUsername("zhangsan");
-        user.setAddress("西藏");
+        user.setAddress("黎巴嫩");
         userDao.updateUser(user);
     }
 
