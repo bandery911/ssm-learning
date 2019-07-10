@@ -6,7 +6,7 @@
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>ssm4 Test Web</name>
-    <url>http://github.com/liyifeng1994/ssm</url>
+    <url>https://github.com/bandery911/ssm-learning.git</url>
     <dependencies>
         <!-- 单元测试 -->
         <dependency>
