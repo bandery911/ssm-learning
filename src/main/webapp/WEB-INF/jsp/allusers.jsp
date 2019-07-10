@@ -12,6 +12,8 @@
 
         $(document).ready(function(){
 
+            //点击所有readonly为false的text时，清空里面的内容
+
             //点击修改地址按钮，修改对应行用户的地址信息
             $(".changeAddressBt").click(function(){
                 var userinfoHTML = $(this).parents("tr");
@@ -34,6 +36,13 @@
             $("#findUserBt").click(function(){
                 var username = $("#findUserText").val();
                 window.location.href = "<%=basePath%>" + "users/findUser?username=" + username;
+            });
+
+            //增加用户
+            $("#addUserBt").click(function () {
+                var username = $(this).parents("div").find("input").val();
+                var address = $(this).parents("div").find("input").eq(1).val();
+                window.location.href = "<%=basePath%>" + "users/addUser?username=" + username + "&address=" + address;
             });
         });
 
@@ -65,6 +74,12 @@
         </tr>
     </c:forEach>
 </table>
+</div>
+<br><br>
+<div>
+    <input type="text" value="输入姓名">&nbsp;
+    <input type="text" value="输入地址">
+    <button value="增加" id="addUserBt">增加</button>
 </div>
 
 </body>

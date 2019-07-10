@@ -51,4 +51,13 @@ public class UserController {
         return "redirect:list";
     }
 
+    @RequestMapping(value = "/addUser")
+    public String addUser(String username, String address) throws Exception{
+        User newUser = new User();
+        newUser.setUsername(username);
+        newUser.setAddress(address);
+        userService.addUser(newUser);
+        return "redirect:list";
+    }
+
 }
