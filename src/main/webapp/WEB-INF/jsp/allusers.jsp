@@ -8,8 +8,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>ssm4</title>
     <script src="https://cdn.staticfile.org/jquery/2.0.0/jquery.min.js"></script>
+    <script type="text/javascript" src='<c:url value="/static/validation.js"></c:url>'></script>
     <script>
-
         $(document).ready(function () {
 
             //点击修改地址按钮，修改对应行用户的地址信息
@@ -21,12 +21,17 @@
                     $(this).text("确认修改");
                     $(userinfoHTML.children("td").eq(2).find("input")).removeAttr("readonly");
                 } else {
-                    $(this).attr("value", "修改地址");
-                    $(this).text("修改地址");
                     var userid = userinfoHTML.children("td").eq(0).find("input").val();
                     var newAddress = userinfoHTML.children("td").eq(2).find("input").val();
-                    $(userinfoHTML.children("td").eq(2).find("input")).attr("readonly", "readonly");
-                    window.location.href = "<%=basePath%>" + "users/updateUser?userid=" + userid + "&address=" + newAddress;
+                    if (checkAddress(newAddress)) {
+                        $(this).attr("value", "修改地址");
+                        $(this).text("修改地址");
+                        $(userinfoHTML.children("td").eq(2).find("input")).attr("readonly", "readonly");
+                        window.location.href = "<%=basePath%>" + "users/updateUser?userid=" + userid + "&address=" + newAddress;
+                    } else {
+                        alert("请输入正确的地址！");
+                    }
+
                 }
             });
 
@@ -40,7 +45,11 @@
             $("#addUserBt").click(function () {
                 var username = $(this).parents("div").find("input").val();
                 var address = $(this).parents("div").find("input").eq(1).val();
-                window.location.href = "<%=basePath%>" + "users/addUser?username=" + username + "&address=" + address;
+                //校验用户名和地址合法性
+                if (checkUsername(username) && checkAddress(address))
+                    window.location.href = "<%=basePath%>" + "users/addUser?username=" + username + "&address=" + address;
+                else
+                    alert("姓名或地址不符合要求，请重新输入！");
             });
 
             //删除用户
