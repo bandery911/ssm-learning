@@ -18,7 +18,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ModelAndView findAll(){
+    public ModelAndView findAll() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("allusers");
         mv.addObject("users", userService.findAll());
@@ -26,7 +26,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/updateUser")
-    public String updateUser(String userid, String address) throws Exception{
+    public String updateUser(String userid, String address) throws Exception {
         User user = new User();
         user.setUserid(Integer.valueOf(userid).intValue());
         user.setAddress(address);
@@ -35,7 +35,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/findUser")
-    public ModelAndView findUser(String username) throws Exception{
+    public ModelAndView findUser(String username) throws Exception {
         ModelAndView mv = new ModelAndView();
         List<User> users = userService.findUser(username);
         mv.setViewName("allusers");
@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/delUser")
-    public String delUser(String userid) throws Exception{
+    public String delUser(String userid) throws Exception {
         User delUser = new User();
         delUser.setUserid(Integer.valueOf(userid).intValue());
         userService.delUser(delUser);
@@ -52,7 +52,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/addUser")
-    public String addUser(String username, String address) throws Exception{
+    public String addUser(String username, String address) throws Exception {
         User newUser = new User();
         newUser.setUsername(username);
         newUser.setAddress(address);

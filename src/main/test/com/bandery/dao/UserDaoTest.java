@@ -13,31 +13,31 @@ public class UserDaoTest extends BaseTest {
     private UserDao userDao;
 
     @Test
-    public void testFindAll() throws Exception{
+    public void testFindAll() throws Exception {
         List<User> users = userDao.findAll();
-        for (User user : users){
+        for (User user : users) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testFindUser() throws Exception{
+    public void testFindUser() throws Exception {
         List<User> users = userDao.findUser("ryan");
-        for (User user : users){
+        for (User user : users) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testFindByAddress() throws Exception{
+    public void testFindByAddress() throws Exception {
         List<User> users = userDao.findByAddress("江苏");
-        for (User user : users){
+        for (User user : users) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testAddUser() throws Exception{
+    public void testAddUser() throws Exception {
         User user = new User();
         user.setUsername("fank");
         user.setAddress("浙江");
@@ -45,14 +45,14 @@ public class UserDaoTest extends BaseTest {
     }
 
     @Test
-    public void testDelUser() throws Exception{
+    public void testDelUser() throws Exception {
         User user = new User();
         user.setUserid(2);
         userDao.delUser(user);
     }
 
     @Test
-    public void updateUser() throws Exception{
+    public void updateUser() throws Exception {
         User user = new User();
         user.setUserid(5);
         user.setUsername("zhangsan");

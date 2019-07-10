@@ -13,31 +13,31 @@ public class UserServiceImplTest extends BaseTest {
     private UserService userService;
 
     @Test
-    public void testFindAll() throws Exception{
+    public void testFindAll() throws Exception {
         List<User> users = userService.findAll();
-        for (User user : users){
+        for (User user : users) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testFindById() throws Exception{
+    public void testFindById() throws Exception {
         List<User> users = userService.findUser("bandery");
-        for (User user : users){
+        for (User user : users) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testFindByAddress() throws Exception{
+    public void testFindByAddress() throws Exception {
         List<User> users = userService.findByAddress("江苏");
-        for (User user : users){
+        for (User user : users) {
             System.out.println(user);
         }
     }
 
     @Test
-    public void testAddUser() throws Exception{
+    public void testAddUser() throws Exception {
         User user = new User();
         user.setUsername("tank");
         user.setAddress("黑龙江");
@@ -45,14 +45,14 @@ public class UserServiceImplTest extends BaseTest {
     }
 
     @Test
-    public void testDelUser() throws Exception{
+    public void testDelUser() throws Exception {
         User user = new User();
         user.setUserid(6);
         userService.delUser(user);
     }
 
     @Test
-    public void updateUser() throws Exception{
+    public void updateUser() throws Exception {
         User user = new User();
         user.setUserid(5);
         user.setUsername("zhangsan");
