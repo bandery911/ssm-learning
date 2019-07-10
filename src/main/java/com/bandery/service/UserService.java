@@ -10,7 +10,7 @@ public interface UserService {
 
     public List<User> findByAddress(String address);
 
-    public User findById(int userid);
+    public List<User> findUser(String username);
 
     public void addUser(User user);
 

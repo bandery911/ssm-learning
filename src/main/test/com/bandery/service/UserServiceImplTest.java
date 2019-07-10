@@ -22,8 +22,10 @@ public class UserServiceImplTest extends BaseTest {
 
     @Test
     public void testFindById() throws Exception{
-        User user = userService.findById(2);
-        System.out.println(user);
+        List<User> users = userService.findUser("bandery");
+        for (User user : users){
+            System.out.println(user);
+        }
     }
 
     @Test

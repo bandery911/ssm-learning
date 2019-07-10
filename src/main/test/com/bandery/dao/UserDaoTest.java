@@ -21,9 +21,11 @@ public class UserDaoTest extends BaseTest {
     }
 
     @Test
-    public void testFindById() throws Exception{
-        User user = userDao.findById(2);
-        System.out.println(user);
+    public void testFindUser() throws Exception{
+        List<User> users = userDao.findUser("ryan");
+        for (User user : users){
+            System.out.println(user);
+        }
     }
 
     @Test

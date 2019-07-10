@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService {
         return userDao.findByAddress(address);
     }
 
-    public User findById(int userid){
-        return userDao.findById(userid);
+    public List<User> findUser(String username){
+        return userDao.findUser(username);
     }
 
     public void addUser(User user){

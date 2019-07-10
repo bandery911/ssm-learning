@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("users")
 public class UserController {
@@ -23,13 +25,24 @@ public class UserController {
         return mv;
     }
 
-    @RequestMapping(value = "/findById")
-    public ModelAndView findById(String id) throws Exception{
+    @RequestMapping(value = "/updateUser")
+    public ModelAndView updateUser(String userid, String address) throws Exception{
+        User user = new User();
+        user.setUserid(Integer.valueOf(userid).intValue());
+        user.setAddress(address);
+        userService.updateUser(user);
         ModelAndView mv = new ModelAndView();
-        User user = userService.findById(Integer.getInteger(id));
-        System.out.println("获取到用户为：" + user);
         mv.setViewName("allusers");
-        mv.addObject("user", user);
+        mv.addObject("users", userService.findAll());
+        return mv;
+    }
+
+    @RequestMapping(value = "/findUser")
+    public ModelAndView findUser(String username) throws Exception{
+        ModelAndView mv = new ModelAndView();
+        List<User> users = userService.findUser(username);
+        mv.setViewName("allusers");
+        mv.addObject("users", users);
         return mv;
     }
 
@@ -43,4 +56,5 @@ public class UserController {
         mv.addObject("users", userService.findAll());
         return mv;
     }
+
 }

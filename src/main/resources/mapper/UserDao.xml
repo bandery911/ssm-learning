@@ -12,12 +12,12 @@
 			user
 	</select>
 
-	<select id="findById" resultType="User">
+	<select id="findUser" resultType="User">
 		SELECT
 			*
 		FROM
 			user
-		WHERE userid=#{userid}
+		WHERE username=#{username}
 	</select>
 
 	<select id="findByAddress" resultType="User">
