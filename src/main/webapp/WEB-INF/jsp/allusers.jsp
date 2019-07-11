@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
+<%@ include file="rootPath.jsp" %>
 <head>
     <title>用户信息</title>
     <!--设备自适应，对移动设备友好，确保适当的绘制和触屏缩放-->
@@ -15,29 +16,30 @@
     <script>
         //向删除确认的模态框中传递用户信息的参数，用于显示
         function values(userid, username, address) {
-            $('#usernameToDelete').html(username + "&emsp;&emsp;" + address);
+            $('#usernameToDelete').children("input:hidden").val(userid);
+            $('#usernameToDelete').children("p").html(username + "&emsp;&emsp;" + address);
         }
 
         $(document).ready(function () {
 
             //确认删除用户
             $(".delUserConfirmed").click(function () {
-                alert("用户已删除");
+                window.location.href = "<%=basePath%>" + "users/delUser?userid=" + $('#usernameToDelete').children("input:hidden").val();
             });
 
             //修改用户地址
             $(".changeAddressBt").click(function () {
-                //alert($(this).text());
                 if ($(this).text() == "修改地址") {
                     $(this).parent().prev().children("input").removeAttr("readonly");
                     $(this).text("确认修改");
                 } else {
                     $(this).parent().prev().children("input").attr("readonly", "readonly");
                     $(this).text("修改地址");
-                    alert("修改成功");
+                    var address = $(this).parent().prev().children("input").val();
+                    var userid = $(this).parent().prev().prev().prev().text();
+                    window.location.href = "<%=basePath%>" + "users/updateUser?userid=" + userid + "&address=" + address;
                 }
             });
-
 
         });
 
@@ -100,6 +102,8 @@
                                 </h4>
                             </div>
                             <div class="modal-body" id="usernameToDelete">
+                                <input type="hidden" value="">
+                                <p></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
