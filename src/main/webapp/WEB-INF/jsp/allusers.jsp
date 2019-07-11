@@ -41,6 +41,12 @@
                 }
             });
 
+            //查询用户
+            $("#findByUsername").click(function () {
+                var username = $(this).parent().children("div").children("input").val();
+                window.location.href = "<%=basePath%>" + "users/findUser?username=" + username;
+            });
+
         });
 
     </script>
@@ -62,7 +68,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="请输入用户姓名">
                 </div>
-                <button type="submit" class="btn btn-default">查询</button>
+                <button type="submit" class="btn btn-default" id="findByUsername">查询</button>
             </form>
         </div>
     </div>
